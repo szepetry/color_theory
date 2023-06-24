@@ -1,0 +1,30 @@
+
+.swatch {
+  height: 100px;
+  color: hsv(0, 0%, 100%);
+}
+
+.top-50 {
+  padding-top: 50px;
+  font-size: 20px;
+}
+
+.inline-div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+body{
+  background-color: #E4F1F3;
+  
+}
+
+.logo {
+    height: auto;
+    width: auto;
+    max-height: 72px;
+    max-width: 250px;
+    mix-blend-mode: multiply;
+
+}
+

@@ -1,0 +1,54 @@
+.icon {
+    height: 50px;
+}
+
+
+.tip:hover {
+    cursor: pointer;
+    position: relative
+}
+
+.tip span {
+    color: black;
+    font-family: var(--bs-body-font-family);
+    visibility: hidden;
+    width: 200px;
+    background-color: rgb(208, 208, 208);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    left: -75%;
+    bottom: 10%;
+    margin-right: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tip:hover span {
+    visibility: visible;
+    opacity: 1;
+}
+
+.swatch {
+    height: 100px;
+    color: hsv(0, 0%, 100%);
+}
+
+.create-center-container{
+    text-align: center;
+}
+
+#quantityMinus{
+    margin-right: 25px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+#quantityPlus{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+}

@@ -1,0 +1,173 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
+<script src="{{url_for('static', filename='js/quiz.js')}}"></script>
+
+<script>
+    let quiz = {{ quiz| tojson}}
+    let score = {{ score| tojson}}
+</script>
+
+<div class="container top-50">
+    <div id="quizAnswerFeedback"></div>
+    <div class="row">
+        <div class="col-6">
+            <h3>Question {{quiz.id}}/6:</h3>
+        </div>
+        <div class="col-6 rightAlign">
+            <span class= "scoreBox"> Score : {{score}}/6 </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h1>{{quiz.question}}</h1>
+        </div>
+    </div>
+    {% if quiz.question_type == 'pairing' %}
+    <div> Drag all the buttons on top of their corresponding schema.</div>
+    {% endif %}
+    <div class="row">
+        {% if quiz.question_type == 'pairing'%}
+        <div class="col-2" id="" data-name="analogous"><img src="{{quiz.images[1]}}" class="img-responsive svg_image"></img></div>
+        <div class="col-2" id="" data-name="triadic"><img src="{{quiz.images[4]}}" class="img-responsive svg_image"></img></div>
+        <div class="col-2" id="" data-name="complementary"><img src="{{quiz.images[0]}}" class="img-responsive svg_image"></img></div>
+        <div class="col-2" id="" data-name="tetradic"><img src="{{quiz.images[5]}}" class="img-responsive svg_image"></img></div>
+        <div class="col-2" id="" data-name="split"><img src="{{quiz.images[2]}}" class="img-responsive svg_image"></img></div>
+        <div class="col-2" id="" data-name="monochromatic"><img src="{{quiz.images[3]}}" class="img-responsive svg_image"></img></div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label class="analogous btn btn-lg btn-outline-secondary btnAnswer" id="analogous" data-name="analogous"></label>
+            </div>
+            <div class="col-2">
+                <label class="triadic btn btn-lg btn-outline-secondary btnAnswer" id="triadic" data-name="triadic"></label>
+            </div>
+            <div class="col-2">
+                <label class="complementary btn btn-lg btn-outline-secondary btnAnswer" id="complementary" data-name="complementary"></label>
+            </div>
+            <div class="col-2">
+                <label class="tetradic btn btn-lg btn-outline-secondary btnAnswer" id="tetradic" data-name="tetradic"></label>
+            </div>
+            <div class="col-2">
+                <label class="split btn btn-lg btn-outline-secondary btnAnswer" id="split" data-name="split"></label>
+            </div>
+            <div class="col-2">
+                <label class="monochromatic btn btn-lg btn-outline-secondary btnAnswer" id="monochromatic" data-name="monochromatic"></label>
+            </div>
+        {% else %}
+        
+        {% if quiz.given_color|length == 0 %}
+            <div class="col-12 fit_50"><img src="{{quiz.images[0]}}" class="img-responsive fit_50"></img></div>
+        {% else %}
+        {% if quiz.images|length != 0 %}
+        <div class="col-4"><img src="{{quiz.images[0]}}" class="img-responsive fit-image "></img></div>
+        {% endif %}
+        
+        <div class="col-4 colorPicker" style = "pointer-events: none"></div>
+        <div class="col-4">
+            <span>Colors:</span>
+            <div class="row">
+                <div id="colorList" style="width: 300px;">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div class="row">
+        {% for choice in quiz.choices %}
+        {% if quiz.question_type == 'pairing' %}
+        <!-- draggable -->
+        <div class="col-2">
+            <!-- <label class="btn btn-lg btn-dark answerButton draggable">{{choice}}</label> -->
+            {% if choice == 'complementary'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="{{choice}}-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+            {% if choice == 'analogous'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="{{choice}}-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+            {% if choice == 'split complementary'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="split-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+            {% if choice == 'monochromatic'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="{{choice}}-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+            {% if choice == 'triadic'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="{{choice}}-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+            {% if choice == 'tetradic'%}
+            <label class="btn btn-lg btn-dark answerButton draggable" id="{{choice}}-draggable" data-name={{choice}}>{{choice}}</label>
+            {% endif %}
+        </div>
+        {% elif quiz.question_type == 'color choosing' %}
+            {% if quiz.choices|length < 4 %}
+                <div class = "col-md-4">
+                    <div class="rad_button color-selection">
+                        <input type="radio" id="{{choice}}" name="q_answer" value="{{choice}}" />
+                        <label class="btn btn-lg btn-dark answerButton" style="background-color: {{choice}};" for="{{choice}}">{{choice}}</label>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-2">
+                    <div class="rad_button">
+                        <input type="radio" id="{{choice}}" name="q_answer" value="{{choice}}" />
+                        <label class="btn btn-lg btn-dark answerButton" style="background-color: {{choice}};" for="{{choice}}">{{choice}}</label>
+                    </div>
+                </div>
+            {% endif %}
+        {% else %}
+            {% if quiz.choices|length < 4 %}
+            <div class="col-4">
+                <div class="rad_button">
+                    <input type="radio" id="{{choice}}" name="q_answer" value="{{choice}}" />
+                    <label class="btn btn-lg btn-dark" for="{{choice}}">{{choice}}</label>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-2">
+                <div class="rad_button">
+                    <input type="radio" id="{{choice}}" name="q_answer" value="{{choice}}" />
+                    <label class="btn btn-lg btn-dark" for="{{choice}}">{{choice}}</label>
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row" id="PairingAnswers">
+        
+    </div>
+    <br>
+    <div class="row">
+        <div class = "col-md-3"></div>
+        <div class = "col-md-3"></div>
+        <div class = "col-md-3"></div>
+        <div class = "col-md-3">
+            <button class="nextButtonQ btn btn-primary" id="nextButtonQuiz"><span> Next </span><i
+                class="fa-solid fa-caret-right"></i></button>
+            </div>
+    </div>
+
+</div>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+<script>
+    $(document).ready(function () {
+        horizontal = false;
+        colorPicker.setColors([{% for color in quiz.given_color %}
+        "{{color}}", {% endfor %}
+    ]);
+    setAllColors(colorPicker.color["$"], mode);
+    });
+    
+    //prevent going back while taking the quiz
+    function disableBack() { window.history.forward(); }
+    setTimeout("disableBack()", 0);
+    window.onunload = function () { null };
+</script>
+
+{% endblock %}

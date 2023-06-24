@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/quiz.css')}}">
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/quiz.js')}}"></script>
+
+<div class="container top-50">
+    <div class="row">
+        <div class="col-12">
+            <center>
+            <h2>You have successfully completed all the learning part and can start the quiz now.</h2>
+            <h4>If you want to review, you can click on the Learn button at the top right of the page.</h4>
+        </center>
+        </div>
+    </div>
+    <div class="row">
+        <div style="padding-top: 30px;"></div>
+        <div class="col-12">
+            <center><button class="nextButton btn btn-primary" id="startButtonQuiz">Start Quiz</button></center>
+        </div>
+    </div>
+</div>
+
+<script>
+     $("#startButtonQuiz").click(function () {
+        window.location.href = '/quiz/1';
+    });
+</script>
+{% endblock %}

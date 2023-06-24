@@ -1,0 +1,129 @@
+{
+    "1": {
+        "id": 1,
+        "question": "Match the labels to the schemes",
+        "question_type": "pairing",
+        "choices": [
+            "complementary",
+            "analogous",
+            "split complementary",
+            "monochromatic",
+            "triadic",
+            "tetradic"
+        ],
+        "given_color":[],
+        "answer":[
+            "complementary",
+            "monochromatic",
+            "analogous",
+            "split complementary",
+            "triadic",
+            "tetradic"
+        ],
+        "next": "2",
+        "images": ["/static/img/complementary.svg","/static/img/analogous.svg","/static/img/split.svg","/static/img/monochromatic.svg","/static/img/triadic.svg","/static/img/tetradic.svg"]
+    },
+    "2": {
+        "id": 2,
+        "question": "What color scheme does this image have?",
+        "question_type": "image",
+        "choices": [
+            "complementary",
+            "analogous",
+            "split complementary",
+            "monochromatic",
+            "triadic",
+            "tetradic"
+        ],
+        "given_color":[
+            "#6344BE",
+            "#4266BE",
+            "#36AEB1"
+        ],
+        "answer":[
+            "analogous"
+        ],
+        "next": "3",
+        "images":["https://lh5.googleusercontent.com/Fw93n3OdNZd9zT8cluUcHTnZ66nw5HdUOoZ0yoXO4dvXjg8aan2gmPtvxTcm4JKMvTyWkmsDtAxc3neil6o5A1QqfeTwdM8HC-BPXXXacXdph_nibHiXA0M7BgerLap6kp1ujZlSaNBJ"]
+    },
+    "3": {
+        "id": 3,
+        "question": "What color scheme does this image have?",
+        "question_type": "image",
+        "choices": [
+            "complementary",
+            "analogous",
+            "split complementary",
+            "monochromatic",
+            "triadic",
+            "tetradic"
+        ],
+        "given_color":[
+            "#C79FDF",
+            "#A96CDF",
+            "#7309AE"
+        ],
+        "answer":[
+            "monochromatic"
+        ],
+        "next": "4",
+        "images":["https://lh5.googleusercontent.com/2VPuFVGB-NqpvbibEYrFFuDTgRWYRQ-PhnrIa6IBISUbYuVEC5ebfIZe6Aik3v8nnmpAVC8gr9lutUIwKnHHt_uCe3TyZloXETLemHtwLpEeiTgfi2IuYq6OVhnb9t_RVD-EIEjalSFM"]
+    },
+    "4": {
+        "id": 4,
+        "question": "What color scheme does this image have?",
+        "question_type": "image",
+        "choices": [
+            "complementary",
+            "analogous",
+            "split complementary",
+            "monochromatic",
+            "triadic",
+            "tetradic"
+        ],
+        "given_color":[
+            "#39b39c",
+            "#ab2c35"
+        ],
+        "answer":[
+            "complementary"
+        ],
+        "next": "5",
+        "images":["https://lh4.googleusercontent.com/SvJ6-UwhDTAbhkLTLjyjBPCkaTBSwCXcj9ivM7_GBYHKx9Xur17yT3Jt9dKGOwLfaDKFFHoDpntrylp59Wk6KunwI6ftc4P7M1aAw-WitXzF0wvgM1DYXbCE5Oc5IVpr8WmQGsjxz_7C"]
+    },
+    "5": {
+        "id": 5,
+        "question": "What color scheme does this image have?",
+        "question_type": "image",
+        "choices": [
+            "complementary",
+            "analogous",
+            "tetradic"
+        ],
+        "given_color":[],
+        "answer":[
+            "complementary"
+        ],
+        "next": "6",
+        "images":["https://lh3.googleusercontent.com/2LWvPcGZu6n2vl-jY7CU4kas4DTXTQNE1fe05VBpugUQ4Db91WRzzJAPJPp3lnPClCg1p5gWMwKsPTu-LsNIR01SwQ5LP-q2950adLvVLNHG6SmKTuT9tsec1t4Mart9BKx5_UWw7ju4"]
+    },
+    "6": {
+        "id": 6,
+        "question": "What color makes completes this triadic scheme?",
+        "question_type": "color choosing",
+        "choices": [
+            "#00008B",
+            "#E29D36",
+            "#E54098"
+        ],
+        "given_color":[
+            "#4098e5",
+            "#98e540"
+        ],
+        "answer":[
+            "#E54098"
+        ],
+        "next": "end",
+        "images":[]
+    }
+}

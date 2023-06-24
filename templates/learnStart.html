@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/learn.css')}}">
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/learn.js')}}"></script>
+
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: {{progress}}%" aria-valuenow="{{progress}}"
+        aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div id="content">
+
+    <button type="button" class="btn btn-light position-absolute top-0 end-0" id="helpButton" {% if 'popover' in learn
+        %}disabled{% endif %}><i class="fa-solid fa-circle-question"></i></button>
+
+
+    <div class="container top-50">
+        {% if 'help' in learn %}
+        <div class="row alert alert-danger d-none" role="alert" id="nextWarning">{{learn.help}}</div>
+        {% endif %}
+        <div class="row">
+            <div class="col-8 ColorPickerCol">
+                <h1>{{learn.title}}</h1>
+                <p>{{learn.description}}</p>
+                <div>
+                    <div class="colorPicker inline-div"></div>
+                    {% if learn.image != '' %}
+                    <div class="inline-div"><img src="{{url_for('static', filename='img/')}}{{learn.image}}"></img>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-2 colorsCol">
+                <span>Colors:</span>
+
+                <div id="colorList">
+
+                </div>
+            </div>
+            <!-- <div class="col-2" id="colorHex">
+                <span>Hex:</span>
+    
+            </div> -->
+
+        </div>
+    </div>
+    {% if 'prev' in learn %}
+    <button class="backButton btn btn-primary position-absolute bottom-0 start-0" id="backButton"><i
+            class="fa-solid fa-caret-left"></i><span> Back</span></button>
+    {% endif %}
+
+    <button class="nextButton btn btn-primary position-absolute bottom-0 end-0" id="nextButton"><span>Next </span><i
+            class="fa-solid fa-caret-right"></i></button>
+
+
+
+    <!-- Button trigger gray screen -->
+    <button type="button" id="grayScreen" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop" hidden></button>
+
+
+    <!-- gray screen -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mode = "{{learn.mode}}";
+        var showPopover = {% if 'popover' in learn %}true{% else %} false{% endif %};
+
+        $(document).ready(function () {
+            colorPicker.setColors([{% for color in learn.startingColors %}
+            "{{color}}", {% endfor %}
+        ]);
+        setAllColors(colorPicker.color["$"], mode);
+        $("#nextButton").click(function () {
+            if (canMoveNext({{ learn.id }})) {
+            window.location.href = "{{url_for('learn', id='')}}{{learn.next}}";
+            } else {
+                $("#nextWarning").removeClass("d-none");
+            }
+        });
+        $("#backButton").click(function () {
+            replaceContent("learn", "{{learn.prev}}")
+            window.history.pushState(`page{{learn.id}}`, '{{learn.title}}', '{{url_for('learn', id='')}}{{learn.prev}}');
+        });
+        $("#helpButton").click(function () {
+            show(-1);
+            $("#grayScreen").click();
+        });
+
+    });
+
+    </script>
+
+
+</div>
+{% endblock %}

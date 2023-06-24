@@ -1,0 +1,148 @@
+{
+    "1": {
+        "id": 1,
+        "title": "Color wheel",
+        "description": "A basic color wheel is the beginning of all color. Notice how the colors are arranged around the wheel in rainbow order.\n\n The color wheel is a great way to start exploring color theory and learn about color palettes.",
+        "mode": "none",
+        "section": "basic",
+        "startingColors": [
+            "ff0000",
+            "00ff00",
+            "0000ff"
+        ],
+        "next": "2",
+        "image": "",
+        "popover":  true
+    },
+    "2": {
+        "id": 2,
+        "title": "Hue",
+        "description": "Hue is pretty much synonymous with what we actually mean when we said the word \"color.\" On a color wheel, each hue is placed around the wheel in a specific order. Try moving the color on the wheel to see how the hue changes",
+        "help": "Try moving the color on the wheel to see how the hue changes",
+        "mode": "none",
+        "section": "basic",
+        "startingColors": [
+            "#ff0000"
+        ],
+        "prev": "1",
+        "next": "3",
+        "image": ""
+    },
+    "3": {
+        "id": 3,
+        "title": "Saturation",
+        "description": "Saturation is how \"bright\" a color is. A color that is very bright is called saturated. A color that is very dark is called desaturated. We do this by adding white to a color. Notice as the color moves towards the center of the color wheel, the colors changes the intensity, but not the hue. Adding more white makes a different tone. Try moving the color towards the center of the wheel to see how the tone changes",
+        "help": "Try moving the color towards the center of the wheel to see how the tone changes",
+        "mode": "monochromatic",
+        "section": "basic",
+        "startingColors": [
+            "#ffff00"
+        ],
+        "next": "4",
+        "prev": "2",
+        "image": ""
+    },
+    "4": {
+        "id": 4,
+        "title": "Lightness",
+        "description": "Lightness is how \"dark\" a color is. A color that is very light is called light. Notice how moving the bottom slide makes the color darker and lighter. The hue remains the same, but the color becomes darker. Adding more black makes a different shade. Try moving the bottom slider to see how the shade changes",
+        "help": "Try moving the bottom slider to see how the shade changes",
+        "mode": "none",
+        "section": "basic",
+        "startingColors": [
+            "#ffff00",
+            "#d9d900"
+        ],
+        "next": "6",
+        "prev": "3",
+        "image": ""
+    },
+    "6": {
+        "id": 6,
+        "title": "Why the science?",
+        "description": "Pay attention to the shape the dots make as you learn the 6 different color schemes. We can use these harmonious color schemes to help us show a pleasing color combination. Color schemes can also help us describe a certain mood to the viewer. \nWhen placed close together, colors communicate with each other. Some are complementary, some make other colors pop, while some colors don't go well together, making both appear dull as a result. Color theory shows us that there are certain color arrangements in a color wheel that can come harmonious if put together in an artwork or design. \n\n",
+        "mode": "none",
+        "section": "basic",
+        "next": "7",
+        "prev": "4",
+        "startingColors":["#ff0000", "#00ff00", "#0000ff"],
+        "image": ""
+    },
+    "7": {
+        "id": 7,
+        "title": "Monochromatic",
+        "description": "Monochromatic color schemes use a single color with varying shades and tints to produce a consistent look and feel. Although it lacks color contrast, it often ends up looking very clean and polished. It also allows you to easily change the darkness and lightness of your colors.",
+        "mode": "monochromatic",
+        "section": "scheme",
+        "startingColors":["#ff0000"],
+        "next": "8",
+        "prev": "6",
+        "image": ""
+    },
+    "8": {
+        "id": 8,
+        "title": "Analogous",
+        "description": "Analogous color schemes are formed by pairing one main color with the two colors directly next to it on the color wheel. Analogous structures do not create themes with high contrasting colors, so they're typically used to create a softer, less contrasting design.",
+        "mode": "analogous",
+        "section": "scheme",
+        "startingColors":["#ff0000"],
+        "next": "9",
+        "prev": "7",
+        "image": ""
+    },
+    "9": {
+        "id": 9,
+        "title": "Complementary",
+        "description": "A complementary color scheme is based on the use of two colors directly across from each other on the color wheel and relevant tints of those colors. The complementary color scheme provides the greatest amount of color contrast. Because of this, you should be careful about how you use the complementary colors in a scheme.",
+        "mode": "complementary",
+        "section": "scheme",
+        "startingColors":["#ff0000"],
+        "next": "10",
+        "prev": "8",
+        "image": ""
+    },
+    "10": {
+        "id": 10,
+        "title": "Split Complementary",
+        "description": "A split complementary scheme includes one dominant color and the two colors directly adjacent to the dominant color's complement. This creates a more nuanced color palette than a complementary color scheme while still retaining the benefits of contrasting colors.",
+        "mode": "split",
+        "section": "scheme",
+        "startingColors":["#ff0000"],
+        "next": "11",
+        "prev": "9",
+        "image": ""
+    },
+    "11": {
+        "id": 11,
+        "title": "Triadic",
+        "description": "Triadic color schemes are created by choosing three colors that are equally placed in lines around the color wheel. Notice the triangular shape it makes, while keeping the tone the same. Triadic color schemes offer high contrasting color schemes while retaining the same tone",
+        "mode": "triadic",
+        "section": "scheme",
+        "next": "12",
+        "prev": "2",
+        "startingColors":["#ff0000", "#00ff00", "#0000ff"],
+        "image": ""
+    },
+    "12": {
+        "id": 12,
+        "title": "Tetradic and square",
+        "description": "The square color scheme uses four colors equidistant from each other on the color wheel to create a square or diamond shape. By changing the distances to form a rectangle, you can also create a rectangular or tetradic scheme.",
+        "mode": "tetradic",
+        "section": "scheme",
+        "next": "13",
+        "prev": "10",
+        "startingColors":["#ff0000"],
+        "image": ""
+    },
+    "13": {
+        "id": 13,
+        "title": "Example Palette",
+        "description": "We can combine 1-2 schemes with varying tints to create many different color palettes. We then order them and increase or decrease the shade. Notice how each color has a lighter and lighter shade as you go down the color palette. Here we use a triadic and monochromatic scheme, and change the tint and shade to create a 5-color palette.",
+        "section": "advanced", 
+        "next": "end",
+        "mode": "none",
+        "prev": "11",
+        "startingColors":["#593C97", "#47AB5B", "#F9B565", "#8C75B5", "#96C69F"],
+        "image": ""
+    }
+}

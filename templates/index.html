@@ -1,0 +1,167 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+
+{% if not isIndex %}
+<button type="button" class="btn btn-light position-absolute top-0 end-0" id="helpButton"><i
+        class="fa-solid fa-circle-question"></i></button>
+{% endif %}
+<div class=" background-base">
+<div class="container px-5 top-50">
+    <div class="row gx-5 align-items-center">
+        {% if isIndex %}
+        <div class="col-lg-6">
+            <!-- Mashead text and app badges-->
+            <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                <h1 class="display-1 lh-1 mb-3">Learn the Basics of Color.</h1>
+                <p class="lead fw-normal text-muted mb-5">Which colors work together, and why? How can you creatively
+                    explore different moods or directions? Learn color schemes and how to use them to create color
+                    palettes!</p>
+                <div class="d-flex flex-column flex-lg-row align-items-center">
+                    <a class="btn btn-lg btn-primary mb-3 me-md-3" href="{{url_for('learn', id='1')}}">Get Started</a>
+                    <a class="btn btn-lg btn-outline-secondary mb-3" href="/create">Play with colors</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="colorPicker"></div>
+        </div>
+        <div class="col-lg-2" id="buttonContainer">
+
+        </div>
+        {% else %}
+        <div class="col-lg-3">
+        </div>
+        <div class="col-lg-4">
+            <div class="colorPicker"></div>
+        </div>
+        <div class="col-lg-2" id="buttonContainer">
+
+        </div>
+        <div class="col-lg-3">
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<div class="container top-50">
+    <div class="row">
+        <div class="col-12 colorsCol">
+            <span>Colors:</span>
+            <div class="row" id="colorList">
+
+            </div>
+            <div class="row" id="colorHex">
+
+            </div>
+            <!-- <span>Active Color:</span>
+            <div class="row" id="activeColor">
+                <div class="col-12 swatch"></div>
+                <span></span>
+            </div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 me-auto">
+            <button type="button" id="generate" class="btn btn-lg btn-secondary mb-3">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                Generate
+            </button>
+            <span>
+            </span>
+        </div>
+        <span class="col-6 ms-auto input-group mb-3" id="numColors" style="{% if not showTutorial %}display: none;{% endif %}width:fit-content">
+            <button class="input-group-text" id="quantityMinus" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Color"><i class="fa-solid fa-trash"></i></button>
+
+            <input type="number" class="form-control" aria-label="Number of colors" id="quantity" name="quantity"
+                min="3" value="5" hidden>
+            <button class="input-group-text tip" id="quantityPlus"  data-bs-toggle="tooltip" data-bs-placement="top" title="Add Color"><i class="fa-solid fa-circle-plus"></i></button>
+
+        </span>
+    </div>
+</div>
+</div>
+{% if not isIndex %}
+
+<!-- Button trigger gray screen -->
+<button type="button" id="grayScreen" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+    hidden></button>
+
+
+<!-- gray screen -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+<script>
+    let hints =
+        [
+            {
+                "ele": "#generate",
+                "title": "Generate",
+                "hint": "Generate a random color palette"
+            },
+            {
+                "ele": "#buttonContainer",
+                "title": "Schemes",
+                "hint": "Try out different schemes here"
+            },
+            {
+                "ele": "#numColors",
+                "title": "Number of Colors",
+                "hint": "Change the number of colors in the palette"
+            },
+            {
+                "ele": "#none",
+                "title": "None",
+                "hint": "Switch back to random color palettes with the top button"
+            },
+            {
+                "ele": "#helpButton",
+                "title": "Help Button",
+                "hint": "To see this tutorial again, click this button"
+            }
+        ]
+    $(document).ready(function () {
+        horizontal = true
+        colorPicker.setColors([
+            "#9EBBE2",
+            "#75CCD0",
+            "#91CD91",
+            "#A5D169",
+            "#F9F49D"
+        ]);
+        setAllColors(colorPicker.color["$"], mode);
+
+
+        hints.forEach(function (hint) {
+            createPopover(hint.ele, hint.title, hint.hint)
+        });
+        {% if showTutorial %}
+
+        if (hints.length > 0) {
+            show(-1)
+            $("#grayScreen").click();
+        }
+        
+        {% endif %}
+        $("#helpButton").click(function () {
+            $("#numColors").show()
+            show(-1);
+            $("#grayScreen").click();
+    });
+    });
+
+</script>
+
+{% endblock %}
